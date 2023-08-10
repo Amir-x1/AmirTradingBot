@@ -1,0 +1,46 @@
+{% extends 'authentication/base_auth.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card mt-5 login-border">
+
+                <div class="card-body" >
+                    <img src="{% static 'img/rick.png' %}" alt="icon" class="icon !important">
+                    <h4 class="pb-3 title-font" style="text-align: center">Start Your Bot</h4>
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {% include "partials/_messages.html" %}
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="username"
+                                id="usernameField"
+                                class="form-control form-control-sm"
+                                value="{{ filedValues.username }}"
+                            />
+                        </div>
+                        <div class="mb-2">
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                id="passwordField"
+                                class="form-control form-control-sm"
+                            />
+                        </div>
+                        <input type="submit" value="Login" class=" btn btn-primary w-100" id="submitBtn">
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+
+<script src="{% static 'js/register.js' %}"></script>
+<script src="{% static 'css/main.css' %}"></script>
+{% endblock %}

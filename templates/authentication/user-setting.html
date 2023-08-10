@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="col-md-7 col-lg-8">
+        <h3 class="mb-3 pt-3">Account Settings </h3>
+        <form class="needs-validation" action="user-setting" method="post">
+            {% csrf_token %}
+
+          <div class="row g-3">
+
+              <div class="col-md-5">
+              <label for="exchange" class="form-label">Exchange</label>
+              <select class="form-select" name="exchange" required="required">
+                <option>Kucoin</option>
+              </select>
+            </div>
+
+
+            <div class="col-12">
+              <label for="API-name" class="form-label">API Name</label>
+              <input type="text" class="form-control required" name="API-name" placeholder="your api name" required="required">
+            </div>
+
+            <div class="col-12">
+              <label for="API-Key" class="form-label">API Key</label>
+              <input type="text" class="form-control" name="API-Key" placeholder="your api key" required="required">
+            </div>
+
+            <div class="col-12">
+              <label for="API-Secret" class="form-label">API Secret</label>
+              <input type="text" class="form-control" name="API-Secret" placeholder="your api secret" required="required">
+            </div>
+
+            <div class="col-12">
+              <label for="API-PassPhrase" class="form-label">API PassPhrase</label>
+              <input type="text" class="form-control" name="API-PassPhrase" placeholder="your api passphrase" required="required">
+            </div>
+
+          </div>
+
+          <br>
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Checkout</button>
+        </form>
+        <hr class="my-4">
+
+          <h4 class="mb-3">Telegram</h4>
+        <form action="telegram-validation">
+            {% include "partials/_messages.html" %}
+{#        <form action="https://t.me/AmirTradingBot_bot">#}
+            <a id="startTelegram" class="w-20 btn btn-primary btn-lg" type="submit" href="https://t.me/AmirTradingBot_bot" target="_blank">Start Telegram Bot</a>
+            <button id="connectTelegram" class="w-20 btn btn-primary btn-lg" type="submit" disabled="disabled">Connect to Telegram</button>
+        </form>
+
+      </div>
+<script>
+    document.querySelector("#startTelegram").addEventListener('click', evt => {
+
+    var testSleep = function () {
+    console.log('Step 1 - Called');
+    setTimeout(function () {
+        document.querySelector("#connectTelegram").disabled = false;
+    }, 8000);
+    }
+    testSleep();
+
+    })
+
+</script>
+
+
+{% endblock %}

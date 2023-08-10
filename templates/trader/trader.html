@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="col-md-7 col-lg-8">
+        <h3 class="mb-3 pt-3">Engine Setup </h3>
+        <form action="/" method="get">
+
+          <div class="row g-3">
+            <div class="col-12">
+                <div class="col-4">
+            <label for="symbol" class="form-label">Symbol</label>
+            <select class="form-select" id="symbol" name="symbol" required>
+            <option value="XBTUSDTM">BTC/USDT</option>
+            <option value="ETHUSDTM">ETH/USDT</option>
+            <option value="BNBUSDTM">BNB/USDT</option>
+            <option value="BCHUSDTM">BCH/USDT</option>
+            <option value="SOLUSDTM">SOL/USDT</option>
+            <option value="LTCUSDTM">LTC/USDT</option>
+            <option value="DOGEUSDTM">DOGE/USDT</option>
+            </select>
+            </div>
+            </div>
+            <div class="col-12">
+                <div class="col-4">
+                  <label for="engine" class="form-label">Engine Type</label>
+                  <select class="form-select" id="engine" name="engine" required>
+                    <option>MovingAverage</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12">
+                  <div class="row">
+                    <div class="col-3">
+                         <label for="ُُTP" class="form-label">Chasing Price Distance %</label>
+                         <input type="number" class="form-control" id="TP" name="TP" placeholder="2" required />
+                    </div>
+                    <div class="col-3">
+                          <label for="SL" class="form-label">Stop Loss %</label>
+                          <input type="number" class="form-control" id="SL" name="SL" placeholder="5" required />
+                    </div>
+                    <div class="col-3">
+                          <label for="verticalOffset" class="form-label">Vertical Offset %</label>
+                          <input type="number" class="form-control" id="verticalOffset" name="verticalOffset" placeholder="0.05" required />
+                    </div>
+                  </div>
+              </div>
+
+
+            <div class="col-12">
+                <div class="col-4">
+            <label for="timeFrame" class="form-label">Time frame</label>
+            <select class="form-select" id="timeFrame" name="timeFrame" required>
+            <option value="1">1 min</option>
+            <option value="5">5 min</option>
+            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="60">1 hr</option>
+            <option value="120">2 hr</option>
+            <option value="240">4 hr</option>
+            <option value="480">8 hr</option>
+            <option value="720">12 hr</option>
+            <option value="1440">1 day</option>
+            <option value="10080">1 week</option>
+            </select>
+            </div>
+            </div>
+
+            <div class="col-12">
+                <div class="col-4">
+                  <label for="leverage" class="form-label">Leverage</label>
+                  <input type="number" class="form-control" id="leverage" name="leverage" placeholder="10" required />
+                </div>
+            </div>
+
+            <div class="col-12">
+            <div class="col-4">
+                  <label for="amount" class="form-label">Amount %</label>
+                  <input type="number" class="form-control percent" id="amount" name="amount" placeholder="50" required />
+                </div>
+            </div>
+
+          </div>
+
+          <br>
+
+          <button style='background-color:{{ engineStartBtnColor }}' id="start" class="w-100 btn btn-primary btn-lg startEngine" type="button">{{ engineStarted }} The Engine</button>
+        </form>
+        <hr class="my-4">
+      </div>
+
+
+<script src="{% static 'js/trader.js' %}"></script>
+{% endblock %}
